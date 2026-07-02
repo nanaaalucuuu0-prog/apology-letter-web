@@ -24,7 +24,7 @@ setInterval(createFallingItem, 300);
 // Envelope interaction
 const envelope = document.getElementById('envelope');
 const letterSection = document.getElementById('letterSection');
-const carouselSection = document.getElementById('carouselSection');
+const quizSection = document.getElementById('quizSection');
 const finalMessage = document.getElementById('finalMessage');
 const btnNext = document.getElementById('btnNext');
 const btnRestart = document.getElementById('btnRestart');
@@ -34,6 +34,7 @@ const btnNo = document.getElementById('btnNo');
 const noMessage = document.getElementById('noMessage');
 const btnTryAgain = document.getElementById('btnTryAgain');
 const envelopeSection = document.querySelector('.envelope-section');
+const quizForm = document.getElementById('quizForm');
 
 envelope.addEventListener('click', () => {
     envelope.classList.add('open');
@@ -65,121 +66,86 @@ btnTryAgain.addEventListener('click', () => {
     envelopeSection.querySelector('.envelope-hint').style.display = 'block';
 });
 
-// Go to carousel
+// Go to quiz
 btnNext.addEventListener('click', () => {
     letterSection.style.display = 'none';
-    carouselSection.style.display = 'block';
-    initCarousel();
+    quizSection.style.display = 'block';
 });
 
-// Carousel functionality
-let currentSlide = 1;
-const totalSlides = 2;
+// Quiz submission
+quizForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    calculateScore();
+});
 
-function initCarousel() {
-    // Create dots
-    const dotsContainer = document.getElementById('dots');
-    dotsContainer.innerHTML = '';
-    for (let i = 1; i <= totalSlides; i++) {
-        const dot = document.createElement('span');
-        dot.className = 'dot';
-        if (i === currentSlide) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-    }
-    showSlide(currentSlide);
-}
+// Quiz answers (jawaban yang benar)
+const correctAnswers = {
+    q1: 'frans',
+    q2: '29 maret 2026',
+    q3: 'membuat cerita',
+    q4: '3 bulan',
+    q5: 'diriku'
+};
 
-function showSlide(n) {
-    if (n > totalSlides) currentSlide = 1;
-    if (n < 1) currentSlide = totalSlides;
-    
-    // Hide all slides
-    document.querySelectorAll('.carousel-slide').forEach(slide => {
-        slide.classList.remove('active');
-    });
-    
-    // Show current slide
-    document.getElementById('slide' + currentSlide).classList.add('active');
-    
-    // Update dots
-    document.querySelectorAll('.dot').forEach((dot, index) => {
-        dot.classList.toggle('active', index + 1 === currentSlide);
-    });
-    
-    // Update counter
-    document.getElementById('currentSlide').textContent = currentSlide;
-}
+// Calculate score
+function calculateScore() {
+    let correctCount = 0;
 
-function goToSlide(n) {
-    currentSlide = n;
-    showSlide(currentSlide);
-}
-
-function nextSlide() {
-    currentSlide++;
-    showSlide(currentSlide);
-}
-
-function prevSlide() {
-    currentSlide--;
-    showSlide(currentSlide);
-}
-
-// Carousel buttons
-const nextBtn = document.getElementById('nextBtn');
-const prevBtn = document.getElementById('prevBtn');
-
-if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-        if (currentSlide === totalSlides) {
-            setTimeout(() => {
-                carouselSection.style.display = 'none';
-                finalMessage.style.display = 'block';
-            }, 500);
+    // Check each answer (case-insensitive, trim whitespace)
+    for (let i = 1; i <= 5; i++) {
+        const userAnswer = document.getElementById(`q${i}`).value.toLowerCase().trim();
+        const correctAnswer = correctAnswers[`q${i}`].toLowerCase().trim();
+        
+        if (userAnswer === correctAnswer) {
+            correctCount++;
         }
-    });
+    }
+
+    // Calculate score
+    let score = 0;
+    let message = '';
+
+    if (correctCount === 5) {
+        score = 100;
+        message = '🤍 Wow! Kamu jawab SEMUA dengan benar! Aku tahu kamu benar-benar kenal aku dan sayang sama aku. Ini adalah score tertinggi! Aku sangat sayang banget sama kamu! 💚';
+    } else if (correctCount === 4 || correctCount === 3) {
+        score = 85;
+        message = '💚 Bagus! Kamu jawab ' + correctCount + ' pertanyaan dengan benar. Kamu memang sayang sama aku. Ada yang kamu lupa, tapi overall kamu masih menggemaskan kok! 💕';
+    } else if (correctCount <= 2) {
+        score = 65;
+        message = '💔 Hmm, kamu hanya jawab ' + correctCount + ' pertanyaan dengan benar. Kayaknya kamu belum terlalu kenal aku atau lagi lupa? Ayoo, kita habiskan lebih banyak waktu bersama jadi kamu lebih kenal aku! 🥺';
+    }
+
+    // Show result
+    showQuizResult(score, message, correctCount);
 }
 
-if (prevBtn) {
-    prevBtn.addEventListener('click', prevSlide);
+// Show quiz result
+function showQuizResult(score, message, correctCount) {
+    quizSection.style.display = 'none';
+    finalMessage.style.display = 'block';
+    
+    document.getElementById('scoreValue').textContent = score;
+    
+    const scoreMessageDiv = document.getElementById('scoreMessage');
+    scoreMessageDiv.innerHTML = `
+        <p class="score-text">${message}</p>
+        <p class="correct-count">Jawaban Benar: ${correctCount} / 5</p>
+    `;
+
+    // Add score class for styling
+    const scoreCircle = document.querySelector('.score-circle');
+    scoreCircle.className = 'score-circle ';
+    if (score === 100) {
+        scoreCircle.classList.add('score-perfect');
+    } else if (score >= 80) {
+        scoreCircle.classList.add('score-good');
+    } else {
+        scoreCircle.classList.add('score-low');
+    }
 }
 
 // Restart button
 btnRestart.addEventListener('click', () => {
     location.reload();
 });
-
-// Keyboard navigation for carousel
-document.addEventListener('keydown', (e) => {
-    if (carouselSection && carouselSection.style.display === 'block') {
-        if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
-    }
-});
-
-// Touch/swipe support for carousel
-let touchStartX = 0;
-let touchEndX = 0;
-
-const carouselContainer = document.querySelector('.carousel-container');
-if (carouselContainer) {
-    carouselContainer.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-
-    carouselContainer.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-}
-
-function handleSwipe() {
-    if (touchStartX - touchEndX > 50) {
-        nextSlide(); // Swipe left
-    }
-    if (touchEndX - touchStartX > 50) {
-        prevSlide(); // Swipe right
-    }
-}
