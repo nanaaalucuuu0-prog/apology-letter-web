@@ -28,13 +28,41 @@ const carouselSection = document.getElementById('carouselSection');
 const finalMessage = document.getElementById('finalMessage');
 const btnNext = document.getElementById('btnNext');
 const btnRestart = document.getElementById('btnRestart');
+const yesNoButtons = document.getElementById('yesNoButtons');
+const btnYes = document.getElementById('btnYes');
+const btnNo = document.getElementById('btnNo');
+const noMessage = document.getElementById('noMessage');
+const btnTryAgain = document.getElementById('btnTryAgain');
+const envelopeSection = document.querySelector('.envelope-section');
 
 envelope.addEventListener('click', () => {
     envelope.classList.add('open');
     setTimeout(() => {
-        document.querySelector('.envelope-section').style.display = 'none';
-        letterSection.style.display = 'block';
+        envelope.style.pointerEvents = 'none';
+        envelopeSection.querySelector('.envelope-hint').style.display = 'none';
+        yesNoButtons.style.display = 'flex';
     }, 600);
+});
+
+// YES Button
+btnYes.addEventListener('click', () => {
+    yesNoButtons.style.display = 'none';
+    envelopeSection.style.display = 'none';
+    letterSection.style.display = 'block';
+});
+
+// NO Button
+btnNo.addEventListener('click', () => {
+    yesNoButtons.style.display = 'none';
+    noMessage.style.display = 'block';
+});
+
+// Try Again Button
+btnTryAgain.addEventListener('click', () => {
+    envelope.classList.remove('open');
+    envelope.style.pointerEvents = 'auto';
+    noMessage.style.display = 'none';
+    envelopeSection.querySelector('.envelope-hint').style.display = 'block';
 });
 
 // Go to carousel
@@ -99,17 +127,24 @@ function prevSlide() {
 }
 
 // Carousel buttons
-document.getElementById('nextBtn').addEventListener('click', () => {
-    nextSlide();
-    if (currentSlide === totalSlides) {
-        setTimeout(() => {
-            carouselSection.style.display = 'none';
-            finalMessage.style.display = 'block';
-        }, 500);
-    }
-});
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
 
-document.getElementById('prevBtn').addEventListener('click', prevSlide);
+if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        if (currentSlide === totalSlides) {
+            setTimeout(() => {
+                carouselSection.style.display = 'none';
+                finalMessage.style.display = 'block';
+            }, 500);
+        }
+    });
+}
+
+if (prevBtn) {
+    prevBtn.addEventListener('click', prevSlide);
+}
 
 // Restart button
 btnRestart.addEventListener('click', () => {
@@ -118,7 +153,7 @@ btnRestart.addEventListener('click', () => {
 
 // Keyboard navigation for carousel
 document.addEventListener('keydown', (e) => {
-    if (carouselSection.style.display === 'block') {
+    if (carouselSection && carouselSection.style.display === 'block') {
         if (e.key === 'ArrowRight') nextSlide();
         if (e.key === 'ArrowLeft') prevSlide();
     }

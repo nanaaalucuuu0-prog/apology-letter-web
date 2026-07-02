@@ -156,6 +156,83 @@ body {
     50% { opacity: 0.4; }
 }
 
+/* YES/NO Buttons */
+.yes-no-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    animation: slideUp 0.6s ease-out;
+}
+
+.btn-yes, .btn-no {
+    padding: 12px 35px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #90EE90 0%, #32CD32 100%);
+    color: white;
+}
+
+.btn-yes:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(50, 205, 50, 0.4);
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #FFB6C6 0%, #FF69B4 100%);
+    color: white;
+}
+
+.btn-no:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+}
+
+/* NO Message */
+.no-message {
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.sad-text {
+    color: #ff1493;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: bounce 0.8s ease-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.btn-try-again {
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+}
+
+.btn-try-again:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4);
+}
+
 /* Letter Styles */
 .letter-section {
     animation: fadeIn 0.8s ease-out;
@@ -178,6 +255,8 @@ body {
     padding: 40px;
     box-shadow: 0 15px 50px rgba(255, 105, 180, 0.2);
     position: relative;
+    max-height: 600px;
+    overflow-y: auto;
 }
 
 .letter::before {
@@ -427,6 +506,11 @@ body {
         bottom: 20px;
         right: 20px;
     }
+
+    .yes-no-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -445,6 +529,7 @@ body {
 
     .letter {
         padding: 20px;
+        max-height: 500px;
     }
 
     .letter-header h1 {
@@ -466,5 +551,14 @@ body {
         font-size: 2.5rem;
         bottom: 15px;
         right: 15px;
+    }
+
+    .yes-no-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-yes, .btn-no {
+        width: 100%;
     }
 }

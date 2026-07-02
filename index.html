@@ -14,7 +14,7 @@
     <div class="bouquet-sticker">💐</div>
 
     <div class="container">
-        <!-- Envelope Section -->
+        <!-- Envelope Section with YES/NO -->
         <div class="envelope-section">
             <div class="envelope" id="envelope">
                 <div class="envelope-flap"></div>
@@ -26,6 +26,18 @@
                 </div>
             </div>
             <p class="envelope-hint">Klik amplop untuk membukanya ↓</p>
+            
+            <!-- YES/NO Buttons -->
+            <div class="yes-no-buttons" id="yesNoButtons" style="display: none;">
+                <button class="btn-yes" id="btnYes">YES 💚</button>
+                <button class="btn-no" id="btnNo">NO 💔</button>
+            </div>
+            
+            <!-- NO Message -->
+            <div class="no-message" id="noMessage" style="display: none;">
+                <p class="sad-text">kamu enggak sayang akuu?? 😭</p>
+                <button class="btn-try-again" id="btnTryAgain">Coba Lagi</button>
+            </div>
         </div>
 
         <!-- Letter Section (Hidden initially) -->
@@ -35,43 +47,49 @@
                     <h1>💕 Surat Untukmu 💕</h1>
                 </div>
                 <div class="letter-content">
-                    <p>Sayangku,</p>
+                    <p>Akuu sayanggg banget samaa kakakk. 🤍</p>
+                    
                     <p>
-                        I just wanna grow old with you. Sampai semua omongan kita berubah menjadi kenyataan, 
-                        dan semua mimpi kita menjadi kenangan terindah. I will always choose you. 🤍
+                        I'm really sorry if selama ini ada sifat aku yang bikin kakaknya kurang nyaman, atau ada perkataan dan sikap aku yang tanpa sengaja nyakitin hati kakaknya, apalagi yang aku omongin pas call tadi. I know my words hurt you, and I'm truly sorry. Aku sama sekali enggak ada niat buat nyakitin kakaknya.
                     </p>
+                    
                     <p>
-                        Aku ingin meminta maaf atas semua kesalahanku. Aku tahu aku tidak sempurna, 
-                        dan kadang aku membuat kamu sedih. Tapi aku ingin kamu tahu bahwa cintaku padamu 
-                        adalah yang paling tulus.
+                        Sebenernya aku tuh orangnya gengsi banget buat ngungkapin apa yang aku rasain. Kadang aku pengen cerita, pengen jujur, pengen blak-blakan, tapi rasa gengsi itu selalu bikin aku milih diem. Padahal jauh di dalam hati, aku pengen banget berani ngomong apa yang aku rasain ke kakaknya.
                     </p>
+                    
                     <p>
-                        Setiap momen bersama kamu adalah hadiah terbesar bagiku. Aku berjanji akan menjadi 
-                        lebih baik, lebih perhatian, dan lebih mencintaimu setiap hari.
+                        Aku juga pengen bisa kayak cewek-cewek lain yang berani bilang kalau lagi kangen, lagi cemburu, lagi butuh perhatian, atau lagi pengen dimanja. Aku pengen bisa ngasih tau semuanya tanpa takut dianggap berlebihan. Bukan karena aku mau ngebatesin atau ngebebanin kakaknya, tapi karena aku pengen belajar buat lebih jujur sama orang yang paling aku sayang.
                     </p>
+                    
                     <p>
-                        Terima kasih sudah memilihku, sudah mempercayai aku, dan sudah memberikan kesempatan 
-                        kepadaku untuk memperbaiki diri. Aku cinta kamu, selamanya. 💕
+                        I want to love you loudly, without being afraid to show it. Aku pengen nyintai kakaknya secara alay, ngasih perhatian banyak-banyak, bilang "I love you" sesering mungkin, ngingetin kakaknya makan, istirahat, hati-hati di jalan, dan ngelakuin hal-hal kecil yang mungkin keliatan receh, tapi itu semua tulus dari hati aku.
                     </p>
+                    
+                    <p>
+                        Thank you for staying, for being patient with me. I'll keep trying to be a better girlfriend for you. Aku cuma berharap kakaknya tetap mau nemenin aku sambil kita sama-sama belajar jadi lebih baik.
+                    </p>
+                    
                     <p class="letter-signature">
+                        I love you so, so much. More than words can ever explain. 🤍<br>
+                        <br>
                         Dengan sepenuh hati,<br>
-                        🤍 Orang yang sangat mencintai kamu 🤍
+                        🤍 Bocil kesayangan nana 🤍
                     </p>
                 </div>
-                <button class="btn-next" id="btnNext">Lihat Foto-foto Kami ➜</button>
+                <button class="btn-next" id="btnNext">Lihat Foto-foto Bocil Kesayangan Nana ➜</button>
             </div>
         </div>
 
         <!-- Photo Carousel Section (Hidden initially) -->
         <div class="carousel-section" id="carouselSection" style="display: none;">
-            <h2>📸 Kenangan Indah Kita 📸</h2>
+            <h2>📸 Foto Bocil Kesayangan Nana 📸</h2>
             
             <div class="carousel-container">
                 <div class="carousel-slide" id="slide1">
-                    <img src="https://imgur.com/placeholder1.jpg" alt="Foto 1" style="width: 100%; height: 500px; object-fit: cover;">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwwDAwwGBAMEBQEDAwwHEwcJBwcICQsJCAgKCAcLCg0KSAkODwsKCQkJCQsLCf/2wBDAQICAgICAwUDAwwKBwYHCgsKCAgKCgsLCwoKCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCf/wAARCAB+AH4DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWm5ybnJ2eoqOkpaanqKmqsrO0tba2uLm6wsPExcbHyMnK0tPU1dbW2Nna4uPk5ebn6Onq8vP09fb2+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWm5ydn5KjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb2+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/2Q==" alt="Foto 1">
                 </div>
                 <div class="carousel-slide" id="slide2">
-                    <img src="https://imgur.com/placeholder2.jpg" alt="Foto 2" style="width: 100%; height: 500px; object-fit: cover;">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwwDAwwGBAMEBQEDAwwHEwcJBwcICQsJCAgKCAcLCg0KSAkODwsKCQkJCQsLCf/2wBDAQICAgICAwUDAwwKBwYHCgsKCAgKCgsLCwoKCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCf/wAARCAB+AH4DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWm5ybnJ2eoqOkpaanqKmqsrO0tba2uLm6wsPExcbHyMnK0tPU1dbW2Nna4uPk5ebn6Onq8vP09fb2+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWm5ydn5KjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb2+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/2Q==" alt="Foto 2">
                 </div>
             </div>
 
@@ -89,9 +107,9 @@
         <!-- Final Message -->
         <div class="final-message" id="finalMessage" style="display: none;">
             <h2>💖 Aku Mencintaimu 💖</h2>
-            <p>Terima kasih telah membaca surat ini dan melihat kenangan indah kita bersama.</p>
+            <p>Terima kasih telah membaca surat ini dan melihat kenangan indah bocil kesayangan nana.</p>
             <p>Mari kita ciptakan lebih banyak momen bahagia bersama. 🌹</p>
-            <p style="margin-top: 20px; font-size: 1.3rem;">I love you so much 🤍</p>
+            <p style="margin-top: 20px; font-size: 1.3rem;">I love you so, so much 🤍</p>
             <button class="btn-restart" id="btnRestart">Mulai Ulang</button>
         </div>
     </div>
