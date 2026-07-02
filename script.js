@@ -1,3 +1,44 @@
+// Music Control
+const backgroundMusic = document.getElementById('backgroundMusic');
+const musicToggle = document.getElementById('musicToggle');
+let isMusicPlaying = true;
+
+// Try to play music with autoplay
+window.addEventListener('load', () => {
+    const playPromise = backgroundMusic.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(() => {
+            // Autoplay blocked, wait for user interaction
+            isMusicPlaying = false;
+            musicToggle.textContent = '🎵 OFF';
+        });
+    }
+});
+
+// Music toggle button
+musicToggle.addEventListener('click', () => {
+    if (isMusicPlaying) {
+        backgroundMusic.pause();
+        musicToggle.textContent = '🎵 OFF';
+        isMusicPlaying = false;
+    } else {
+        backgroundMusic.play();
+        musicToggle.textContent = '🎵 ON';
+        isMusicPlaying = true;
+    }
+});
+
+// Allow music to play on first user interaction
+document.addEventListener('click', () => {
+    if (!isMusicPlaying) {
+        backgroundMusic.play().catch(() => {
+            console.log('Autoplay still blocked');
+        });
+        isMusicPlaying = true;
+        musicToggle.textContent = '🎵 ON';
+    }
+}, { once: true });
+
 // Falling hearts and flowers animation
 function createFallingItem() {
     const items = ['❤️', '💕', '🌹', '🌸', '💖', '🧡', '💗', '✨'];
