@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Permintaan Maaf Untukmu 💝</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Falling hearts and flowers -->
+    <div class="falling-container"></div>
+
+    <div class="container">
+        <!-- Envelope Section -->
+        <div class="envelope-section">
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <div class="envelope-front">
+                        <h2>💌 Untuk Sayang 💌</h2>
+                        <p>Buka aku...</p>
+                    </div>
+                </div>
+            </div>
+            <p class="envelope-hint">Klik amplop untuk membukanya ↓</p>
+        </div>
+
+        <!-- Letter Section (Hidden initially) -->
+        <div class="letter-section" id="letterSection" style="display: none;">
+            <div class="letter">
+                <div class="letter-header">
+                    <h1>💕 Surat Untukmu 💕</h1>
+                </div>
+                <div class="letter-content">
+                    <p>Sayang,</p>
+                    <p>
+                        Aku ingin meminta maaf atas semua kesalahanku. Aku tahu aku tidak sempurna, 
+                        dan kadang aku membuat kamu sedih. Tapi aku ingin kamu tahu bahwa cintaku padamu 
+                        adalah yang paling tulus.
+                    </p>
+                    <p>
+                        Setiap momen bersama kamu adalah hadiah terbesar bagiku. Aku berjanji akan menjadi 
+                        lebih baik, lebih perhatian, dan lebih mencintaimu setiap hari.
+                    </p>
+                    <p>
+                        Terima kasih sudah memilihku, sudah mempercayai aku, dan sudah memberikan kesempatan 
+                        kepadaku untuk memperbaiki diri. Aku cinta kamu, selamanya.
+                    </p>
+                    <p class="letter-signature">
+                        Dengan sepenuh hati,<br>
+                        🖤 Orang yang sangat mencintai kamu 🖤
+                    </p>
+                </div>
+                <button class="btn-next" id="btnNext">Lihat Foto-foto Kami ➜</button>
+            </div>
+        </div>
+
+        <!-- Photo Carousel Section (Hidden initially) -->
+        <div class="carousel-section" id="carouselSection" style="display: none;">
+            <h2>📸 Kenangan Indah Kita 📸</h2>
+            
+            <div class="carousel-container">
+                <div class="carousel-slide" id="slide1">
+                    <img src="https://via.placeholder.com/500x500?text=Foto+1" alt="Foto 1">
+                </div>
+                <div class="carousel-slide" id="slide2">
+                    <img src="https://via.placeholder.com/500x500?text=Foto+2" alt="Foto 2">
+                </div>
+                <div class="carousel-slide" id="slide3">
+                    <img src="https://via.placeholder.com/500x500?text=Foto+3" alt="Foto 3">
+                </div>
+                <div class="carousel-slide" id="slide4">
+                    <img src="https://via.placeholder.com/500x500?text=Foto+4" alt="Foto 4">
+                </div>
+                <div class="carousel-slide" id="slide5">
+                    <img src="https://via.placeholder.com/500x500?text=Foto+5" alt="Foto 5">
+                </div>
+            </div>
+
+            <div class="carousel-controls">
+                <button class="carousel-btn prev" id="prevBtn">❮</button>
+                <div class="carousel-dots" id="dots"></div>
+                <button class="carousel-btn next" id="nextBtn">❯</button>
+            </div>
+
+            <div class="carousel-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">5</span>
+            </div>
+        </div>
+
+        <!-- Final Message -->
+        <div class="final-message" id="finalMessage" style="display: none;">
+            <h2>💖 Aku Mencintaimu 💖</h2>
+            <p>Terima kasih telah membaca surat ini dan melihat kenangan indah kita bersama.</p>
+            <p>Mari kita ciptakan lebih banyak momen bahagia bersama. 🌹</p>
+            <button class="btn-restart" id="btnRestart">Mulai Ulang</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
