@@ -1,6 +1,6 @@
 // Falling hearts and flowers animation
 function createFallingItem() {
-    const items = ['❤️', '💕', '🌹', '🌸', '💐', '🦋', '💖', '✨'];
+    const items = ['❤️', '💕', '🌹', '🌸', '💖', '🧡', '💗', '✨'];
     const randomItem = items[Math.floor(Math.random() * items.length)];
     const fallingItem = document.createElement('div');
     fallingItem.className = 'falling-item';
@@ -46,7 +46,7 @@ btnNext.addEventListener('click', () => {
 
 // Carousel functionality
 let currentSlide = 1;
-const totalSlides = 5;
+const totalSlides = 2;
 
 function initCarousel() {
     // Create dots
@@ -128,14 +128,17 @@ document.addEventListener('keydown', (e) => {
 let touchStartX = 0;
 let touchEndX = 0;
 
-document.querySelector('.carousel-container').addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-});
+const carouselContainer = document.querySelector('.carousel-container');
+if (carouselContainer) {
+    carouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
 
-document.querySelector('.carousel-container').addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
+    carouselContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+}
 
 function handleSwipe() {
     if (touchStartX - touchEndX > 50) {
